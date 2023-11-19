@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">QuotePics</string>
+    <string name="quote_title_label">Quote of The Day</string>
+    <string name="given_quote">"The best preparation for tomorrow is doing your best today."</string>
+    <string name="date">Sun Nov 19 2023</string>
+    <string name="pictures_label">Pictures</string>
+    <string name="take_picture_label">Take Picture</string>
 </resources>
