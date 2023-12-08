@@ -12,7 +12,6 @@ class QuoteHolder(private val binding: ListItemQuoteBinding) : RecyclerView.View
     fun bind(quote: Quote) {
         binding.quoteText.text = quote.text
         binding.quoteAuthor.text = quote.author
-        binding.quoteDate.text = quote.dt.toString()
 
         binding.root.setOnClickListener{
             Snackbar.make(binding.root,

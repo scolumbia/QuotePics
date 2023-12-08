@@ -8,6 +8,7 @@ class QuotesListViewModel : ViewModel() {
     init {
         for (i in 0 until 100) {
             val quote = Quote(
+                quoteId = i,
                 text = "Quote number $i",
                 author = "Author of quote number $i"
             )
