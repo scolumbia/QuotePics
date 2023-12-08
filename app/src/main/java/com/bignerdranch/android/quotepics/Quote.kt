@@ -15,23 +15,8 @@ data class Quote(
         parcel.readString()!!
     )
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(quoteId)
-        parcel.writeString(text)
-        parcel.writeString(author)
-    }
-
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Quote> {
-        override fun createFromParcel(parcel: Parcel): Quote {
-            return Quote(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Quote?> {
-            return arrayOfNulls(size)
-        }
-    }
 }
