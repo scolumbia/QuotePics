@@ -1,7 +1,9 @@
 package com.bignerdranch.android.quotepics
 
 import androidx.lifecycle.ViewModel
+import java.util.UUID
 
-class QuoteDetailViewModel: ViewModel() {
+class QuoteDetailViewModel(quoteId: UUID): ViewModel() {
+
 
 }

@@ -17,5 +17,9 @@
     <fragment
         android:id="@+id/quoteDetailFragment"
         android:name="com.bignerdranch.android.quotepics.QuoteDetailFragment"
-        android:label="QuoteDetailFragment" />
+        android:label="QuoteDetailFragment" >
+        <argument
+            android:name="quote"
+            app:argType="com.bignerdranch.android.quotepics.Quote" />
+    </fragment>
 </navigation>

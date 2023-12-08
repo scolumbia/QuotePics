@@ -29,9 +29,13 @@ class QuoteDetailFragment : Fragment() {
     private val binding
         get() = checkNotNull(_binding) { "FragmentQuoteDetailBinding was null" }
 
-    private val quoteDetailViewModel: QuoteDetailViewModel by viewModels()
 
     private val args: QuoteDetailFragmentArgs by navArgs()
+
+    private val quoteDetailViewModel: QuoteDetailViewModel by viewModels()
+//    private val quoteDetailViewModel: QuoteDetailViewModel by viewModels {
+//        MomentDetailViewModelFactory(args.quoteId)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
