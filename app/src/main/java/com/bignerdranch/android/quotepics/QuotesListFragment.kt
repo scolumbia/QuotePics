@@ -45,6 +45,13 @@ class QuotesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        binding.quotesRecyclerView.adapter = QuotesListAdapter(quotesListViewModel.quotes) { quote ->
+//            val action = QuotesListFragmentDirections
+//                .actionQ(quote.quoteId)
+//            findNavController().navigate(action)
+//
+//        }
+
 //        viewLifeCycleOwner.lifecycleScope.launch {
 //            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
 //                quotesListViewModel.quotes.collect {quotes ->
