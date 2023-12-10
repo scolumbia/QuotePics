@@ -49,9 +49,9 @@ class QuoteDetailFragment : Fragment() {
     ): View? {
         _binding = FragmentQuoteDetailBinding.inflate(inflater, container, false)
 
-        binding.quoteDetailViewModel = quoteDetailViewModel
-
-        binding.lifecycleOwner = viewLifecycleOwner
+//        binding.quoteDetailViewModel = quoteDetailViewModel
+//
+//        binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
     }
