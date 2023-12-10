@@ -11,7 +11,7 @@
         android:label="QuotesListFragment"
         tools:layout="@layout/fragment_quotes_list">
         <action
-            android:id="@+id/action_quotesListFragment_to_quoteDetailFragment"
+            android:id="@+id/show_quote_detail"
             app:destination="@id/quoteDetailFragment" />
     </fragment>
     <fragment
