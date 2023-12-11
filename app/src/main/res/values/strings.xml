@@ -3,6 +3,7 @@
     <string name="quote_title_label">Quote of The Day</string>
     <string name="given_quote">"The best preparation for tomorrow is doing your best today."</string>
     <string name="author_placeholder">Mark Twain</string>
-    <string name="pictures_label">Pictures</string>
+    <string name="pictures_label">Community Pictures</string>
     <string name="take_picture_label">Take Picture</string>
+
 </resources>
