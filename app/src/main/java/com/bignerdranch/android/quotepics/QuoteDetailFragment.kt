@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
+import java.io.File
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -22,6 +24,7 @@ import kotlinx.coroutines.launch
 import android.text.format.DateFormat
 import com.bignerdranch.android.quotepics.databinding.FragmentQuoteDetailBinding
 import java.util.Date
+import androidx.recyclerview.widget.GridLayoutManager
 
 class QuoteDetailFragment : Fragment() {
     private var _binding: FragmentQuoteDetailBinding? = null
@@ -37,6 +40,12 @@ class QuoteDetailFragment : Fragment() {
 //        MomentDetailViewModelFactory(args.quoteId)
 //    }
 
+    private val takePhoto = registerForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ) {
+        //TODO
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,15 +57,36 @@ class QuoteDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentQuoteDetailBinding.inflate(inflater, container, false)
-
-//        binding.quoteDetailViewModel = quoteDetailViewModel
-//
-//        binding.lifecycleOwner = viewLifecycleOwner
-
+        binding.quotePictures.layoutManager = GridLayoutManager(context, 3)
+        val galleryItems = mutableListOf<GalleryItem>()
+//        val momentFiles = getMomentFiles(id)
+//        for (file in quoteFiles) {
+//            val uri = FileProvider.getUriForFile(
+//                requireContext(),
+//                "edu.appstate.cs.moments.fileprovider",
+//                file
+//            )
+//            galleryItems.add(GalleryItem(uri))
+//        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // set onclick listener for the camera button
+        binding.takePicture.setOnClickListener(View.OnClickListener {
+            val photoName = "IMG_${DateFormat.format("yyyyMMdd_hhmmss", Date())}.jpg"
+            val photoFile = File(
+                requireContext().filesDir,
+                photoName
+            )
+            val photoURI = FileProvider.getUriForFile(
+                requireContext(),
+                "com.bignerdranch.android.quotepics.fileprovider",
+                photoFile
+            )
+            takePhoto.launch(photoURI)
+        })
     }
 }
