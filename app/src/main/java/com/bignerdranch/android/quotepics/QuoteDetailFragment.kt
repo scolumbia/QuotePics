@@ -22,6 +22,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import android.text.format.DateFormat
+import android.util.Log
 import com.bignerdranch.android.quotepics.databinding.FragmentQuoteDetailBinding
 import java.util.Date
 import androidx.recyclerview.widget.GridLayoutManager
@@ -68,6 +69,10 @@ class QuoteDetailFragment : Fragment() {
 //            )
 //            galleryItems.add(GalleryItem(uri))
 //        }
+        Log.d("argument passed", args.quote.text)
+        binding.dailyQuote.text = args.quote.text
+        binding.quoteAuthor.text = args.quote.author
+
         return binding.root
     }
 
