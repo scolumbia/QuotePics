@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 
 private const val TAG = "QuotesListFragment"
 class QuotesListFragment : Fragment() {
@@ -35,9 +36,9 @@ class QuotesListFragment : Fragment() {
 
         binding.quotesRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        val quotes = quotesListViewModel.quotes
-        val adapter = QuotesListAdapter(quotes)
-        binding.quotesRecyclerView.adapter = adapter
+//        val quotes = quotesListViewModel.quotes
+//        val adapter = QuotesListAdapter(quotes)
+//        binding.quotesRecyclerView.adapter = adapter
 
         return binding.root
     }
@@ -45,23 +46,14 @@ class QuotesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.quotesRecyclerView.adapter = QuotesListAdapter(quotesListViewModel.quotes) { quote ->
-//            val action = QuotesListFragmentDirections
-//                .actionQ(quote.quoteId)
-//            findNavController().navigate(action)
-//
-//        }
+        // navigate to QuoteDetailFragment when a Quote is clicked. Pass a Quote as an argument
+        // to QuoteDetailFragment
+        binding.quotesRecyclerView.adapter = QuotesListAdapter(quotesListViewModel.quotes) { quote ->
+            val action = QuotesListFragmentDirections.showQuoteDetail(quote)
+            findNavController().navigate(action)
+        }
 
-//        viewLifeCycleOwner.lifecycleScope.launch {
-//            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                quotesListViewModel.quotes.collect {quotes ->
-//                    binding.quotesRecyclerView.adapter = QuotesListAdapter(quotes) { quote ->
-//                        val action = QuotesListFragmentDirections
-//                            .actionQuotesListFragmentToQuoteDetailFragment(quote.quoteId)
-//                        findNavController().navigate(action)}
-//                }
-//            }
-//        }
+
 
     }
 }
