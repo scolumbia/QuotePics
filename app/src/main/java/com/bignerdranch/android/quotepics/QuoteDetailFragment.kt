@@ -1,5 +1,9 @@
 package com.bignerdranch.android.quotepics
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +33,8 @@ class QuoteDetailFragment : Fragment() {
 
     private val args: QuoteDetailFragmentArgs by navArgs()
 
+    private var photoFile: File? = null
+
     private val quoteDetailViewModel: QuoteDetailViewModel by viewModels()
 //    private val quoteDetailViewModel: QuoteDetailViewModel by viewModels {
 //        MomentDetailViewModelFactory(args.quoteId)
@@ -36,8 +42,16 @@ class QuoteDetailFragment : Fragment() {
 
     private val takePhoto = registerForActivityResult(
         ActivityResultContracts.TakePicture()
-    ) {
-        //TODO
+    ) { didTakePhoto: Boolean ->
+        if (didTakePhoto) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                QuoteRepository().addQuoteImage(
+                    args.quote.id,
+                    photoFile!!
+                )
+                updatePhotos()
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,19 +66,14 @@ class QuoteDetailFragment : Fragment() {
     ): View? {
         _binding = FragmentQuoteDetailBinding.inflate(inflater, container, false)
         binding.quotePictures.layoutManager = GridLayoutManager(context, 3)
-        val galleryItems = mutableListOf<GalleryItem>()
-//        val momentFiles = getMomentFiles(id)
-//        for (file in quoteFiles) {
-//            val uri = FileProvider.getUriForFile(
-//                requireContext(),
-//                "edu.appstate.cs.moments.fileprovider",
-//                file
-//            )
-//            galleryItems.add(GalleryItem(uri))
-//        }
         Log.d("argument passed", args.quote.text)
         binding.dailyQuote.text = args.quote.text
         binding.quoteAuthor.text = args.quote.author
+
+        val captureImageIntent = takePhoto.contract.createIntent(
+            requireContext(),
+            Uri.parse("")
+        )
 
         return binding.root
     }
@@ -79,12 +88,15 @@ class QuoteDetailFragment : Fragment() {
                 requireContext().filesDir,
                 photoName
             )
+            this.photoFile = photoFile
             val photoURI = FileProvider.getUriForFile(
                 requireContext(),
                 "com.bignerdranch.android.quotepics.fileprovider",
                 photoFile
             )
+            Log.d("photoURI", photoURI.toString())
             takePhoto.launch(photoURI)
+
         })
 
         viewLifecycleOwner.lifecycleScope.launch {

@@ -1,3 +1,5 @@
+import io
+
 from flask import Flask, request, jsonify
 import os
 import json
@@ -65,6 +67,36 @@ def add_pic(quote_id):
     image.save(path)
     return jsonify({'success': f'Image {filename} saved!'}), 200
 
+
+def hash_image_from_bytes(image_buf: bytes):
+    sha256 = hashlib.sha256()
+    sha256.update(image_buf)
+    return sha256.hexdigest()
+
+
+@app.route('/quote/add_pic_base64', methods=['POST'])
+def add_pic_base64():
+    args = request.args
+    if 'quote_id' not in args:
+        return jsonify({'error': 'quote_id parameter missing!'}), 400
+    quote_id = int(args['quote_id'])
+    if quote_id > len(QUOTES) or quote_id < 0:
+        return jsonify({'error': f'Quote not found with id {quote_id}!'}), 400
+    # Read image from request, it is the only thing in the body
+    image_buf = request.data
+    # Generate a unique filename for the image, using the image sha256 hash
+    filename = hash_image_from_bytes(image_buf) + '.png'
+    # Create a pil image from the image buffer
+    image = base64.b64decode(image_buf)
+    image = Image.open(io.BytesIO(image))
+    # Resize image if it is too big
+    if image.size[0] > MAX_IMAGE_SIZE[0] or image.size[1] > MAX_IMAGE_SIZE[1]:
+        image = image.resize(MAX_IMAGE_SIZE)
+    # Save image to disk under a directory named after the quote id
+    path = os.path.abspath(f'./python_api/pics/{quote_id}/{filename}')
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    image.save(path)
+    return jsonify({'success': f'Image {filename} saved!'}), 200
 
 @app.route('/quote/get_pics/', methods=['GET'])
 def get_pics():

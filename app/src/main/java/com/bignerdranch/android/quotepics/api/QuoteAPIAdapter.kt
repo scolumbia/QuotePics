@@ -4,6 +4,7 @@ import android.util.Log
 import com.bignerdranch.android.quotepics.Quote
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
+import java.io.File
 
 private const val TAG = "QuoteAPIAdapter"
 

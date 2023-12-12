@@ -59,7 +59,7 @@ class QuotesListFragment : Fragment() {
                         // Snackbar message of the quote id clicked (cast to string)
                         val quoteIdString = quote.id.toString()
                         Log.d(TAG, "Quote clicked: $quoteIdString")
-                        Snackbar.make(view, quoteIdString, Snackbar.LENGTH_SHORT).show()
+//                        Snackbar.make(view, quoteIdString, Snackbar.LENGTH_SHORT).show()
                         val action = QuotesListFragmentDirections.showQuoteDetail(quote)
                         findNavController().navigate(action)
                     }
