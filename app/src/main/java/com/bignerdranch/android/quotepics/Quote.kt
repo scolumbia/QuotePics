@@ -1,12 +1,21 @@
 package com.bignerdranch.android.quotepics
 
-import java.util.Date
-//import java.util.UUID
+import android.os.Parcel
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-data class Quote(var text: String, var author: String, var dt: Date = Date())
-//    data class Quote(
-////        val id: UUID,
-//        var text: String,
-//        var author: String,
-//        var dt: Date =Date()
-//    )
+@Parcelize
+data class Quote(
+    val id: Int, var text: String, var author: String
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readString()!!,
+        parcel.readString()!!
+    )
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+}

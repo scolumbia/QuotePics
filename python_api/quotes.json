@@ -1,82 +1,82 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "author": "Og Mandino",
-    "quote": "Failure will never overtake me if my determination to succeed is strong enough."
+    "text": "Failure will never overtake me if my determination to succeed is strong enough."
+  },
+  {
+    "id": 1,
+    "author": "Thomas A. Edison",
+    "text": "I have not failed. I've just found 10,000 ways that won't work."
   },
   {
     "id": 2,
-    "author": "Thomas A. Edison",
-    "quote": "I have not failed. I've just found 10,000 ways that won't work."
+    "author": "Maya Angelou",
+    "text": "There is no greater agony than bearing an untold story inside you."
   },
   {
     "id": 3,
-    "author": "Maya Angelou",
-    "quote": "There is no greater agony than bearing an untold story inside you."
+    "author": "Albert Einstein",
+    "text": "Life is like riding a bicycle. To keep your balance, you must keep moving."
   },
   {
     "id": 4,
-    "author": "Albert Einstein",
-    "quote": "Life is like riding a bicycle. To keep your balance, you must keep moving."
+    "author": "Lewis Carroll",
+    "text": "It’s no use going back to yesterday, because I was a different person then."
   },
   {
     "id": 5,
-    "author": "Lewis Carroll",
-    "quote": "It’s no use going back to yesterday, because I was a different person then."
+    "author": "Audrey Hepburn",
+    "text": "Nothing is impossible, the word itself says “I’m possible”!"
   },
   {
     "id": 6,
-    "author": "Audrey Hepburn",
-    "quote": "Nothing is impossible, the word itself says “I’m possible”!"
+    "author": "Eleanor Roosevelt",
+    "text": "Do what you feel in your heart to be right – for you’ll be criticized anyway."
   },
   {
     "id": 7,
-    "author": "Eleanor Roosevelt",
-    "quote": "Do what you feel in your heart to be right – for you’ll be criticized anyway."
+    "author": "William Shakespeare",
+    "text": "We know what we are, but know not what we may be."
   },
   {
     "id": 8,
-    "author": "William Shakespeare",
-    "quote": "We know what we are, but know not what we may be."
+    "author": "Nelson Mandela",
+    "text": "It always seems impossible until it’s done."
   },
   {
     "id": 9,
-    "author": "Nelson Mandela",
-    "quote": "It always seems impossible until it’s done."
+    "author": "Martin Luther King Jr.",
+    "text": "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that."
   },
   {
     "id": 10,
-    "author": "Martin Luther King Jr.",
-    "quote": "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that."
+    "author": "Steve Jobs",
+    "text": "Your time is limited, so don’t waste it living someone else’s life."
   },
   {
     "id": 11,
-    "author": "Steve Jobs",
-    "quote": "Your time is limited, so don’t waste it living someone else’s life."
+    "author": "Thomas Szasz",
+    "text": "Two wrongs don't make a right, but they make a good excuse."
   },
   {
     "id": 12,
-    "author": "Thomas Szasz",
-    "quote": "Two wrongs don't make a right, but they make a good excuse."
+    "author": "Rick Riordan",
+    "text": "If my life is going to mean anything, I have to live it myself."
   },
   {
     "id": 13,
-    "author": "Rick Riordan",
-    "quote": "If my life is going to mean anything, I have to live it myself."
+    "author": "Neil Gaiman",
+    "text": "Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten."
   },
   {
     "id": 14,
-    "author": "Neil Gaiman",
-    "quote": "Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten."
+    "author": "Ralph Waldo Emerson",
+    "text": "Always do what you are afraid to do."
   },
   {
     "id": 15,
-    "author": "Ralph Waldo Emerson",
-    "quote": "Always do what you are afraid to do."
-  },
-  {
-    "id": 16,
     "author": "Oprah Winfrey",
-    "quote": "Turn your wounds into wisdom."
+    "text": "Turn your wounds into wisdom."
   }
 ]
