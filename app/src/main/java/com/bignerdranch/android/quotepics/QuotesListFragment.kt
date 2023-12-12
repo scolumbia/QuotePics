@@ -14,6 +14,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 
 private const val TAG = "QuotesListFragment"
 class QuotesListFragment : Fragment() {
@@ -26,6 +29,7 @@ class QuotesListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -60,5 +64,20 @@ class QuotesListFragment : Fragment() {
             }
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.fragment_quotes_list, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.refresh -> {
+                // refresh()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

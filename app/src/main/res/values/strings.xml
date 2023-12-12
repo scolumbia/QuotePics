@@ -5,5 +5,6 @@
     <string name="author_placeholder">Mark Twain</string>
     <string name="pictures_label">Community Pictures</string>
     <string name="take_picture_label">Take Picture</string>
+    <string name="refresh_label">Refresh</string>
 
 </resources>
