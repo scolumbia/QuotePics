@@ -1,81 +1,81 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "author": "Og Mandino",
     "text": "Failure will never overtake me if my determination to succeed is strong enough."
   },
   {
-    "id": 2,
+    "id": 1,
     "author": "Thomas A. Edison",
     "text": "I have not failed. I've just found 10,000 ways that won't work."
   },
   {
-    "id": 3,
+    "id": 2,
     "author": "Maya Angelou",
     "text": "There is no greater agony than bearing an untold story inside you."
   },
   {
-    "id": 4,
+    "id": 3,
     "author": "Albert Einstein",
     "text": "Life is like riding a bicycle. To keep your balance, you must keep moving."
   },
   {
-    "id": 5,
+    "id": 4,
     "author": "Lewis Carroll",
     "text": "It’s no use going back to yesterday, because I was a different person then."
   },
   {
-    "id": 6,
+    "id": 5,
     "author": "Audrey Hepburn",
     "text": "Nothing is impossible, the word itself says “I’m possible”!"
   },
   {
-    "id": 7,
+    "id": 6,
     "author": "Eleanor Roosevelt",
     "text": "Do what you feel in your heart to be right – for you’ll be criticized anyway."
   },
   {
-    "id": 8,
+    "id": 7,
     "author": "William Shakespeare",
     "text": "We know what we are, but know not what we may be."
   },
   {
-    "id": 9,
+    "id": 8,
     "author": "Nelson Mandela",
     "text": "It always seems impossible until it’s done."
   },
   {
-    "id": 10,
+    "id": 9,
     "author": "Martin Luther King Jr.",
     "text": "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that."
   },
   {
-    "id": 11,
+    "id": 10,
     "author": "Steve Jobs",
     "text": "Your time is limited, so don’t waste it living someone else’s life."
   },
   {
-    "id": 12,
+    "id": 11,
     "author": "Thomas Szasz",
     "text": "Two wrongs don't make a right, but they make a good excuse."
   },
   {
-    "id": 13,
+    "id": 12,
     "author": "Rick Riordan",
     "text": "If my life is going to mean anything, I have to live it myself."
   },
   {
-    "id": 14,
+    "id": 13,
     "author": "Neil Gaiman",
     "text": "Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten."
   },
   {
-    "id": 15,
+    "id": 14,
     "author": "Ralph Waldo Emerson",
     "text": "Always do what you are afraid to do."
   },
   {
-    "id": 16,
+    "id": 15,
     "author": "Oprah Winfrey",
     "text": "Turn your wounds into wisdom."
   }

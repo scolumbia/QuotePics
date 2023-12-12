@@ -4,28 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import java.io.File
-import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.fragment.findNavController
-import kotlinx.coroutines.launch
 import android.text.format.DateFormat
 import android.util.Log
 import com.bignerdranch.android.quotepics.databinding.FragmentQuoteDetailBinding
 import java.util.Date
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bignerdranch.android.quotepics.databinding.ListItemPhotoBinding
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class QuoteDetailFragment : Fragment() {
     private var _binding: FragmentQuoteDetailBinding? = null
@@ -93,5 +86,53 @@ class QuoteDetailFragment : Fragment() {
             )
             takePhoto.launch(photoURI)
         })
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            updatePhotos()
+        }
     }
+
+    private suspend fun updatePhotos() {
+        val quoteId = args.quote.id
+
+        binding.quotePictures.adapter = PhotoAdapter(
+            QuoteRepository().getQuoteImages(quoteId)
+        )
+
+    }
+
+    class PhotoHolder(
+        private val binding: ListItemPhotoBinding
+    ): RecyclerView.ViewHolder(binding.root) {
+        fun bind(photoFileBase64: String) {
+            // Load the file from the base64 string
+            val imageBytes = android.util.Base64.decode(
+                photoFileBase64, android.util.Base64.DEFAULT
+            )
+            val decodedImage = android.graphics.BitmapFactory.decodeByteArray(
+                imageBytes, 0, imageBytes.size
+            )
+            binding.itemImageView.setImageBitmap(decodedImage)
+        }
+    }
+
+    class PhotoAdapter(
+        private val photoFiles: List<String>
+    ): RecyclerView.Adapter<PhotoHolder>() {
+
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
+            val inflater = LayoutInflater.from(parent.context)
+            val binding = ListItemPhotoBinding.inflate(inflater, parent, false)
+            return PhotoHolder(binding)
+        }
+
+        override fun getItemCount() = photoFiles.size
+
+        override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
+            val photoFile = photoFiles[position]
+            holder.bind(photoFile)
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.bignerdranch.android.quotepics
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,8 +56,10 @@ class QuotesListFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 quotesListViewModel.uiState.collect { uiState ->
                     binding.quotesRecyclerView.adapter = QuotesListAdapter(uiState.quotes) { quote ->
-                        // Snackbar message of the quote author clicked
-                        Snackbar.make(view, quote.author, Snackbar.LENGTH_SHORT).show()
+                        // Snackbar message of the quote id clicked (cast to string)
+                        val quoteIdString = quote.id.toString()
+                        Log.d(TAG, "Quote clicked: $quoteIdString")
+                        Snackbar.make(view, quoteIdString, Snackbar.LENGTH_SHORT).show()
                         val action = QuotesListFragmentDirections.showQuoteDetail(quote)
                         findNavController().navigate(action)
                     }

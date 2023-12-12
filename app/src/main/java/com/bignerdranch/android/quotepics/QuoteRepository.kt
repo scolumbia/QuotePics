@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 import retrofit2.create
 
 
-const val ENDPOINT_URL = "http://192.168.1.14:5000/"
+const val ENDPOINT_URL = "http://beemail.page:5000/"
 
 class QuoteRepository {
     private val quoteAPI: QuoteAPI
@@ -41,5 +41,9 @@ class QuoteRepository {
 
     suspend fun getQuotes(): List<Quote> {
         return quoteAPI.getQuotes()
+    }
+
+    suspend fun getQuoteImages(quoteId: Int): List<String> {
+        return quoteAPI.getQuoteImages(quoteId)
     }
 }
