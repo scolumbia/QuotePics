@@ -38,6 +38,11 @@ def get_quote(quote_id):
     return jsonify(quote), 200
 
 
+@app.route('/quote', methods=['GET'])
+def get_all_quotes():
+    return jsonify(QUOTES), 200
+
+
 @app.route('/quote/add_pic/<int:quote_id>', methods=['POST'])
 def add_pic(quote_id):
     """
@@ -91,6 +96,6 @@ def get_one_pic(quote_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
 

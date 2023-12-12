@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 private const val TAG = "QuotesListFragment"
@@ -46,14 +47,18 @@ class QuotesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // navigate to QuoteDetailFragment when a Quote is clicked. Pass a Quote as an argument
-        // to QuoteDetailFragment
-        binding.quotesRecyclerView.adapter = QuotesListAdapter(quotesListViewModel.quotes) { quote ->
-            val action = QuotesListFragmentDirections.showQuoteDetail(quote)
-            findNavController().navigate(action)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                quotesListViewModel.uiState.collect { uiState ->
+                    binding.quotesRecyclerView.adapter = QuotesListAdapter(uiState.quotes) { quote ->
+                        // Snackbar message of the quote author clicked
+                        Snackbar.make(view, quote.author, Snackbar.LENGTH_SHORT).show()
+                        val action = QuotesListFragmentDirections.showQuoteDetail(quote)
+                        findNavController().navigate(action)
+                    }
+                }
+            }
         }
-
-
 
     }
 }
